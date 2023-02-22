@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
+import { FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 
@@ -84,8 +85,8 @@ const Navbar = () => {
 
                         </>
 
-                        : <></>
-                        // <FaUserAlt style={{ height: '50px' }} ></FaUserAlt>
+                        :
+                        <FaUserAlt style={{ height: '50px' }} ></FaUserAlt>
                     }
                 </Link>
 
