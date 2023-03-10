@@ -70,7 +70,7 @@ const Navbar = () => {
                 </label>
 
 
-                <Link className='me-3 ml-5' to="/profile">
+                <Link className='me-3 ml-5' to="">
                     {user?.photoURL ?
                         <>
                             {user?.photoURL ?
@@ -86,6 +86,7 @@ const Navbar = () => {
                         </>
 
                         :
+
                         <FaUserAlt style={{ height: '50px' }} ></FaUserAlt>
                     }
                 </Link>
