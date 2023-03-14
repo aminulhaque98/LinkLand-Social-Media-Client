@@ -1,6 +1,8 @@
+import './home.css';
 import React, { useContext } from 'react';
 import { FaImages } from 'react-icons/fa';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
+import PostModal from '../../PostModal/PostModal';
 
 const Home = () => {
     const { user } = useContext(AuthContext);
@@ -12,7 +14,8 @@ const Home = () => {
                         <img src={user?.photoURL} alt="" />
                     </div>
                     {/* <input type="text" placeholder="what's on your mind?" ng-model="myModel" className="input input-bordered input-success w-full max-w-xs" /> */}
-                    <button className="btn-active btn-ghost rounded-full w-1/2 text-left pl-4">What's on your mind {user?.displayName}?</button>
+
+                    <label htmlFor="post-modal" className="input-style btn-active btn-ghost rounded-full sm:w-full md:w-full lg:w-1/2 text-left pl-4">What's on your mind {user?.displayName}?</label>
 
                     {/* <div className="w-96 h-24">
                         <select className="select select-bordered select-xs mb-2 max-w-xs">
@@ -27,8 +30,13 @@ const Home = () => {
 
                 <div className="divider "></div>
 
-                <div className=' justify-center text-center'><button className="btn btn-active btn-ghost"><span className='pr-2 text-2xl'><FaImages></FaImages></span> Photo/video</button></div>
+                <label htmlFor='post-modal' className='label-btn-style btn btn-active btn-ghost'>
+                    <FaImages></FaImages>Photo/video
+                </label>
             </div>
+
+            {/* modal */}
+            <PostModal></PostModal>
         </div>
     );
 };

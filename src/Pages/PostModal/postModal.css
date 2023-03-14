@@ -1,0 +1,19 @@
+input[type="file"] {
+    display: none;
+}
+
+.label-style {
+    /* height: 60px; */
+    width: 250px;
+    display: flex;
+    gap: 5px;
+    /* background-color: aqua; */
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: x-large;
+    justify-content: center;
+    align-items: center;
+}
