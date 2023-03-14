@@ -10,33 +10,53 @@ const PostModal = () => {
     const handlePosting = event => {
         event.preventDefault();
         const form = event.target;
-        // const name = form.userName.value;
-        // const email = form.email.value;
+        const privacyType = form.privacyType.value;
         const postYourMind = form.postYourMind.value;
+        const image = form.image.files[0];
 
+        console.log('field', postYourMind, image, privacyType);
 
-        //mongodb te data upload
-        const book = {
-            // name,
-            // email,
-            postYourMind
-        }
-        // fetch('https://products-resale-server-side-amber.vercel.app/bookings', {
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(book)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         if (data.acknowledged) {
-        //             // setBooking(null);
-        //             // toast.success('Your Posting placed successfully');
+        //process.env.REACT_APP_imgbb i am not find problem 
+        const formDate = new FormData()
+        formDate.append('image', image)
 
-        //         }
-        //     })
-        //     .catch(err => console.error(err));
+        const url = "https://api.imgbb.com/1/upload?key=b0e7ee6ce6b56eb9ba71cba89e876465";
+
+        console.log(url);
+
+        //imgbb te photo upload
+        fetch(url, {
+            method: 'POST',
+            body: formDate,
+        })
+            .then(res => res.json())
+            .then(data => {
+                const { display_url } = data?.data
+
+                //mongodb te data upload
+                const postU = {
+                    privacyType,
+                    postYourMind,
+                    picture: display_url,
+
+                }
+                fetch('http://localhost:5000/socialPosts', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(postU)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.acknowledged) {
+                            form.reset();
+                            toast.success('Your post placed successfully');
+                        }
+                    })
+                    .catch(err => console.error(err));
+
+            }).catch(err => console.log(err))
 
     }
 
@@ -50,24 +70,24 @@ const PostModal = () => {
                 <div className="modal-box relative">
                     <label htmlFor="post-modal" className="btn btn-accent w-24 btn-circle absolute right-2 top-2 text-5xl"><FaBackspace></FaBackspace></label>
 
-                    <div className="avatar flex gap-5">
-                        <div className="w-12 h-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                            <img src={user?.photoURL} alt="" />
-                        </div>
-                        <span>
-                            <h1 className=''>{user?.displayName}</h1>
-
-                            <select className="select select-bordered select-xs w-24  mb-2 max-w-xs">
-                                <option selected>Public</option>
-                                <option>Friends</option>
-                                <option>Friends except...</option>
-                                <option>Only me</option>
-                            </select>
-
-                        </span>
-                    </div>
-
                     <form onSubmit={handlePosting} className='grid grid-cols-1 gap-3 mt-4'>
+                        <div className="avatar flex gap-5">
+                            <div className="w-12 h-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                <img src={user?.photoURL} alt="" />
+                            </div>
+                            <span>
+                                <h1 className=''>{user?.displayName}</h1>
+
+                                <select name="privacyType" className="select select-bordered select-xs w-24  mb-2 max-w-xs">
+                                    <option selected>Public</option>
+                                    <option>Friends</option>
+                                    <option>Friends except...</option>
+                                    <option>Only me</option>
+                                </select>
+
+                            </span>
+                        </div>
+
                         {/* <input name="userName" type="text" disabled value={user?.displayName} className="input input-bordered w-full" />
                     <input name="email" type="text" disabled value={user?.email} className="input input-bordered w-full" /> */}
 
