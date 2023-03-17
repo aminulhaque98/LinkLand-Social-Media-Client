@@ -15,8 +15,7 @@ const Posts = () => {
         <div>
             <div className='text-center my-5'>
                 <p className='text-2xl font-bold '>Top Posts</p>
-                <h2 className='text-5xl font-semibold'>Our Service Aria</h2>
-                <p className=''>Knowledge and experience gives us a step up over the competition.</p>
+                {/* <h2 className='text-5xl font-semibold'>Our Post Aria</h2> */}
             </div>
 
             <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>

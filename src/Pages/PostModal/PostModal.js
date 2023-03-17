@@ -35,6 +35,8 @@ const PostModal = () => {
 
                 //mongodb te data upload
                 const postU = {
+                    userPhotoURL: user?.photoURL,
+                    userName: user?.displayName,
                     privacyType,
                     postYourMind,
                     picture: display_url,
