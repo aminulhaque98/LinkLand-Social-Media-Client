@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { FaImages } from 'react-icons/fa';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import PostModal from '../../PostModal/PostModal';
+import Posts from '../../Posts/Posts';
 
 const Home = () => {
     const { user } = useContext(AuthContext);
@@ -34,6 +35,8 @@ const Home = () => {
                     <FaImages></FaImages>Photo/video
                 </label>
             </div>
+            {/* post */}
+            <Posts></Posts>
 
             {/* modal */}
             <PostModal></PostModal>
