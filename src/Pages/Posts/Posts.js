@@ -33,7 +33,7 @@ const Posts = () => {
             </div>
 
             <div className="text-center m-8">
-                <Link to='/media'><button className="btn btn-outline btn-secondary text-2xl px-20">show More</button></Link>
+                <Link to='/media'><button className="btn btn-outline btn-secondary sm:text-xl md:text-2xl lg:text-2xl px-10">Show More</button></Link>
             </div>
 
         </div>
