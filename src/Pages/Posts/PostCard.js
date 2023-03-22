@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import { FaRegCommentAlt, FaRegShareSquare } from 'react-icons/fa';
+import { AiOutlineLike } from 'react-icons/ai';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const PostCard = ({ post }) => {
@@ -8,9 +10,7 @@ const PostCard = ({ post }) => {
     return (
         <div>
             <div className="card w-80 bg-base-100 shadow-2xl">
-                <figure>
-                    <img className='w-full h-56' src={picture} alt="image" />
-                </figure>
+
                 <div className="card-body">
 
                     <div className="avatar flex gap-5">
@@ -28,12 +28,15 @@ const PostCard = ({ post }) => {
                         <div className="badge badge-secondary">{privacyType}</div>
                     </h2> */}
                     <p>{postYourMind}</p>
-                    <div className="divider"></div>
-                    <div className="card-actions justify-between">
-                        <div className="badge badge-outline">Like</div>
-                        <div className="badge badge-outline">Comment</div>
-                        <div className="badge badge-outline">Share</div>
-                    </div>
+                </div>
+                <figure>
+                    <img className='w-full h-56' src={picture} alt="image" />
+                </figure>
+                <div className="divider"></div>
+                <div className="card-actions mb-5 justify-evenly">
+                    <div className="badge badge-outline"> <AiOutlineLike></AiOutlineLike> Like</div>
+                    <div className="badge badge-outline"> <FaRegCommentAlt></FaRegCommentAlt>   Comment</div>
+                    <div className="badge badge-outline"> <FaRegShareSquare></FaRegShareSquare> Share</div>
                 </div>
             </div>
         </div>

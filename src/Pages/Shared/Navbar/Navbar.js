@@ -19,7 +19,7 @@ const Navbar = () => {
     const menuItems = <>
         <li className='font-semibold'><Link to='/'>Home</Link></li>
 
-        <li className='font-semibold'><Link to='#fqa'>Media</Link></li>
+        <li className='font-semibold'><Link to='/media'>Media</Link></li>
         <li className='font-semibold'><Link to='#blog'>About</Link></li>
 
         <li className='font-semibold'>{

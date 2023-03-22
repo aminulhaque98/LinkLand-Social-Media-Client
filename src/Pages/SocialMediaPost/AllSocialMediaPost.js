@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import PostCard from './PostCard';
+import PostCard from '../Posts/PostCard';
+import Posts from '../Posts/Posts';
 
-const Posts = () => {
+const AllSocialMediaPost = () => {
     const [posts, setPosts] = useState([]);
-    const [visible, setVisiable] = useState(3);
+
 
     useEffect(() => {
         fetch("https://linkland-social-server.vercel.app/socialPosts")
             .then(res => res.json())
             .then(data => setPosts(data))
     }, [])
-
     return (
         <div>
             <div className='text-center my-5'>
-                <p className='text-2xl font-bold '>Top Posts</p>
+                <p className='text-2xl font-bold '>All Social Posts</p>
                 {/* <h2 className='text-5xl font-semibold'>Our Post Aria</h2> */}
             </div>
 
@@ -23,7 +22,7 @@ const Posts = () => {
 
 
                 {
-                    posts.slice(0, visible).map(post => <PostCard
+                    posts.map(post => <PostCard
                         key={post._id}
                         post={post}
                     ></PostCard>
@@ -31,13 +30,8 @@ const Posts = () => {
                 }
 
             </div>
-
-            <div className="text-center m-8">
-                <Link to='/media'><button className="btn btn-outline btn-secondary text-2xl px-20">show More</button></Link>
-            </div>
-
         </div>
     );
 };
 
-export default Posts;
+export default AllSocialMediaPost;

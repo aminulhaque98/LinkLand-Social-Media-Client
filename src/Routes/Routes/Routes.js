@@ -3,6 +3,7 @@ import Main from "../../Layout/Main";
 import NotFountPage from "../../NotFountPages/NotFountPage";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
+import AllSocialMediaPost from "../../Pages/SocialMediaPost/AllSocialMediaPost";
 import SignUp from "../../SignUp/SignUp";
 
 
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/media',
+                element: <AllSocialMediaPost></AllSocialMediaPost>
             }
         ]
     },

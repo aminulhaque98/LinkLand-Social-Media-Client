@@ -42,7 +42,7 @@ const PostModal = () => {
                     picture: display_url,
 
                 }
-                fetch('http://localhost:5000/socialPosts', {
+                fetch('https://linkland-social-server.vercel.app/socialPosts', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
