@@ -27,7 +27,7 @@ const PostCard = ({ post }) => {
                         image!
                         <div className="badge badge-secondary">{privacyType}</div>
                     </h2> */}
-                    <p>{postYourMind.slice(0, 30)}</p>
+                    <p>{postYourMind.slice(0, 100)}...Read More</p>
                 </div>
                 <figure>
                     <img className='w-full h-56' src={picture} alt="image" />
