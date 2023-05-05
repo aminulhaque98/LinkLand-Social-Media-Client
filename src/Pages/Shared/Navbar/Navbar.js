@@ -47,7 +47,7 @@ const Navbar = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <Link to="/"><img className='w-12 h-12 lg-ml-16 ' src="https://i.ibb.co/X3N5sfw/Whats-App-Image-2023-02-20-at-2-00-30-AM.jpg" alt="" /></Link>
+                <Link to="/"><img className='w-12 h-12 lg-ml-16 ' src="https://i.ibb.co/V9HDTYf/linkland-Logo.jpg" alt="linkland-Logo" /></Link>
                 <Link to="/" className="lg:text-xl lg:font-bold"><span className='text-purple-600 lg:text-2xl'>LinkLand</span></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
