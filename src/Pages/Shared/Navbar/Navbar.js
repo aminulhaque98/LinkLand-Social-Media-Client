@@ -20,7 +20,7 @@ const Navbar = () => {
         <li className='font-semibold'><Link to='/'>Home</Link></li>
 
         <li className='font-semibold'><Link to='/media'>Media</Link></li>
-        <li className='font-semibold'><Link to='#blog'>About</Link></li>
+        <li className='font-semibold'><Link to='/about'>About</Link></li>
 
         <li className='font-semibold'>{
             user?.uid ?

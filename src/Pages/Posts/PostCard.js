@@ -1,11 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaRegCommentAlt, FaRegShareSquare } from 'react-icons/fa';
 import { AiOutlineLike } from 'react-icons/ai';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const PostCard = ({ post }) => {
     const { user } = useContext(AuthContext);
-    const { _id, userPhotoURL, userName, picture, privacyType, postYourMind } = post;
+    const { _id, userPhotoURL, userName, picture, privacyType, postYourMind, } = post;
+    const [count, setCount] = useState(0);
+
 
     return (
         <div>
@@ -30,14 +32,20 @@ const PostCard = ({ post }) => {
                     <p>{postYourMind.slice(0, 100)}...Read More</p>
                 </div>
                 <figure>
-                    <img className='w-full h-56' src={picture} alt="image" />
+                    <img className='w-full h-56' src={picture} alt="postPicture" />
                 </figure>
-                <div className="divider"></div>
-                <div className="card-actions mb-5 justify-evenly">
-                    <div className="badge badge-outline"> <AiOutlineLike></AiOutlineLike> Like</div>
-                    <div className="badge badge-outline"> <FaRegCommentAlt></FaRegCommentAlt>   Comment</div>
-                    <div className="badge badge-outline"> <FaRegShareSquare></FaRegShareSquare> Share</div>
+                <div className="card-actions mt-5 justify-evenly">
+                    <div className="badge badge-outline"> <AiOutlineLike></AiOutlineLike> {count}</div>
+                    <div className="badge badge-outline"> <FaRegCommentAlt></FaRegCommentAlt>   02</div>
+                    <div className="badge badge-outline"> <FaRegShareSquare></FaRegShareSquare> 00</div>
                 </div>
+                <div className="divider mt-0 mb-0"></div>
+                <div className="card-actions  justify-evenly">
+                    <button onClick={() => setCount((previousCount) => previousCount + 1)} className="badge badge-outline"> <AiOutlineLike></AiOutlineLike> Like</button>
+                    <button className="badge badge-outline"> <FaRegCommentAlt></FaRegCommentAlt> Comment</button>
+                    <button className="badge badge-outline"> <FaRegShareSquare></FaRegShareSquare> Share</button>
+                </div>
+                <div className="divider mt-0"></div>
             </div>
         </div>
     );

@@ -14,7 +14,7 @@ const PostModal = () => {
         const postYourMind = form.postYourMind.value;
         const image = form.image.files[0];
 
-        console.log('field', postYourMind, image, privacyType);
+        // console.log('field', postYourMind, image, privacyType);
 
         //process.env.REACT_APP_imgbb i am not find problem 
         const formDate = new FormData()

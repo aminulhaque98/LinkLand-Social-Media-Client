@@ -5,6 +5,7 @@ import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import AllSocialMediaPost from "../../Pages/SocialMediaPost/AllSocialMediaPost";
 import SignUp from "../../SignUp/SignUp";
+import About from "../../Pages/About/About";
 
 
 export const router = createBrowserRouter([
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
             {
                 path: '/media',
                 element: <AllSocialMediaPost></AllSocialMediaPost>
+            },
+            {
+                path: '/about',
+                element: <About></About>
             }
         ]
     },
