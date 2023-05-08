@@ -22,7 +22,7 @@ const PostModal = () => {
 
         const url = "https://api.imgbb.com/1/upload?key=b0e7ee6ce6b56eb9ba71cba89e876465";
 
-        console.log(url);
+        // console.log(url);
 
         //imgbb te photo upload
         fetch(url, {

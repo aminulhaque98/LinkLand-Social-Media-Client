@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PostCard from './PostCard';
 
+
 const Posts = () => {
     const [posts, setPosts] = useState([]);
     const [visible, setVisiable] = useState(3);
@@ -13,19 +14,19 @@ const Posts = () => {
             .then(data => setPosts(data))
     }, [])
 
-    const handleReactUpdate = id => {
-        fetch(`http://localhost:5000/socialPosts/${id}`, {
-            method: 'PATCH',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({ reacting: 'count' })
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            })
-    }
+    // const handleReactUpdate = id => {
+    //     fetch(`http://localhost:5000/socialPosts/${id}`, {
+    //         method: 'PATCH',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ reacting: 'count' })
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data);
+    //         })
+    // }
 
     return (
         <div>
@@ -41,7 +42,7 @@ const Posts = () => {
                     posts.slice(0, visible).map(post => <PostCard
                         key={post._id}
                         post={post}
-                        handleReactUpdate={handleReactUpdate}
+                    // handleReactUpdate={handleReactUpdate}
                     ></PostCard>
                     )
                 }
@@ -51,6 +52,7 @@ const Posts = () => {
             {/* <div className="text-center m-8">
                 <Link to='/media'><button className="btn btn-outline btn-secondary sm:text-xl md:text-2xl lg:text-2xl px-10">Show More</button></Link>
             </div> */}
+
 
         </div>
     );

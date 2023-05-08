@@ -1,12 +1,23 @@
-import React, { useContext, useState } from 'react';
+import React, {useEffect, useContext, useState } from 'react';
 import { FaRegCommentAlt, FaRegShareSquare } from 'react-icons/fa';
 import { AiOutlineLike } from 'react-icons/ai';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import CommentModal from '../Comment/CommentModal';
 
 const PostCard = ({ post }) => {
     const { user } = useContext(AuthContext);
     const { _id, userPhotoURL, userName, picture, privacyType, postYourMind, } = post;
     const [count, setCount] = useState(0);
+
+    const [comments, setComments] = useState([]);
+
+    useEffect(() => {
+        fetch('https://linkland-social-server.vercel.app/socialComment')
+            .then(res => res.json())
+            .then(data => setComments(data))
+    }, []);
+
+
 
 
     return (
@@ -36,17 +47,20 @@ const PostCard = ({ post }) => {
                 </figure>
                 <div className="card-actions mt-5 justify-evenly">
                     <div className="badge badge-outline"> <AiOutlineLike></AiOutlineLike> {count}</div>
-                    <div className="badge badge-outline"> <FaRegCommentAlt></FaRegCommentAlt>   02</div>
+                    <div className="badge badge-outline"> <FaRegCommentAlt></FaRegCommentAlt>   {comments.length}</div>
                     <div className="badge badge-outline"> <FaRegShareSquare></FaRegShareSquare> 00</div>
                 </div>
                 <div className="divider mt-0 mb-0"></div>
                 <div className="card-actions  justify-evenly">
                     <button onClick={() => setCount((previousCount) => previousCount + 1)} className="badge badge-outline"> <AiOutlineLike></AiOutlineLike> Like</button>
-                    <button className="badge badge-outline"> <FaRegCommentAlt></FaRegCommentAlt> Comment</button>
+                    <label htmlFor='comment-modal' className="label-btn badge badge-outline"> <FaRegCommentAlt></FaRegCommentAlt> Comment</label>
                     <button className="badge badge-outline"> <FaRegShareSquare></FaRegShareSquare> Share</button>
                 </div>
                 <div className="divider mt-0"></div>
             </div>
+            {/* comment modal */}
+
+            <CommentModal></CommentModal>
         </div>
     );
 };
